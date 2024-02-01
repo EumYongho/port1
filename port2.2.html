@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "./json/best.json",
+                dataType: "json",
+                success: function (data) {
+                    if (data.length > 0) {console.log(data)
+                        for (var i in data) {
+                            var title = data[i].title;
+                            var subtitle = data[i].subtitle;
+                            var price = data[i].price;
+                            var url = data[i].url;
+                            $(".box").eq(i).append('<div><a href="#">' + "<img src='img/best/" + data[i].url + "'/>" + '</a></div>');
+                            $(".box").eq(i).append('<h5><a href="#">' + data[i].title + "</a></h5>");
+                            $(".box").eq(i).append('<p><a href="#">' + data[i].subtitle + "</a></p>");
+                            $(".box").eq(i).append("<span>" + data[i].price + "</span>");
+
+                            var count = Math.floor(Math.random() * 100);
+                            $(".box").eq(i).append("<button" + count + "REVIEWS" + "</button>");
+
+                            $(".box > div").attr("width", "228");
+                            $(".box > div").attr("height", "228");
+                            $(".box > div").attr("overflow", "hidden");
+
+                            $(".box > div > a > img").attr("width", "228");
+                            $(".box > div > a > img").attr("height", "228");
+                            $(".box > div > a > img").attr("alt", "상품사진");
+
+                            $(".box > div > a > img").hover(function () {
+                                $(this).attr("width", "228").attr("height", "228").css({ "opacity": "0.6", "display": "inline"});
+                            },
+                                function () {
+                                    $(this).attr("width", "228").attr("height", "228").css({ "opacity": "1", "display": "inline" });
+                                });
+                            $(".box>h5>a").css({ "font-size": "15px", "height": "30px", "margin": "0px", "marginTop": "0px", "marginRight": "15px", "marginLeft": "15px", "color": "#000", "text-align": "left", "text-decoration": "none", "display": "block" });
+                            $(".box>p>a").css({ "border-bottom": "1px solid #eee", "marginRight": "15px", "marginTop": "-5px", "marginLeft": "15px", "font-size": "12px", "color": "#666", "line-height": "45px", "text-align": "left", "text-decoration": "none", "display": "block" });
+                            $(".box>span").css({ "font-size": "15px", "marginLeft": "15px", "marginRight": "15px", "float": "left" });
+                            $(".box>button").css({ "font-size": "11px", "border-radius": " 3px", "border": "none", "background": "#ba7112", "padding": "5px", "color": "#fff", "marginRight": "15px", "float": "right", "cursor": "pointer" });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <link rel="stylesheet" , href="css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div id="logo"><img src="img/logo.gif" alt="logo"></div>
+            <div class="search">
+                <input type="text" placeholder="">
+            </div>
+            <div id="unmenu">
+                <ul>
+                    <li><a href="#"><img src="img/login.png"></a></li>
+                    <li><a href="#"><img src="img/mypage.png"></a></li>
+                    <li><a href="#"><img src="img/qa.png"></a></li>
+                </ul>
+            </div>
+            <div id="nav">
+                <ul class="nav_wrap">
+                    <li class="first_nav_btn"><img src="img/karte.svg"> 카테고리</li>
+                    <li><a href="https://www.foodingfactory.com/concept/index.php"><span class="newst">N</span>
+                            푸딩공작소
+                        </a></li>
+                    <li><a href="https://www.foodingfactory.com/goods/goods_list.php?cateCd=041002">신상품</a></li>
+                    <li><a href="https://www.foodingfactory.com/goods/best.php">베스트</a></li>
+                    <li><a href="https://www.foodingfactory.com/goods/goods_list.php?cateCd=043">할인특가</a></li>
+                    <li><a href="https://www.foodingfactory.com/providerlist/provider_list.php">입점브랜드</a></li>
+                    <li><a href="https://www.foodingfactory.com/board/list.php?&bdId=cock&list=all">이벤트</a></li>
+                </ul>
+            </div>
+            <slide></slide>
+    </div>
+    </header>
+    </div>
+    <div id="slidewrap">
+
+        
+        <ul class="slide">
+
+            <li><img src="img/slide1.jpg" alt="slide image"></li>
+            <li><img src="img/slide2.jpg" alt="slide image"></li>
+            <li><img src="img/slide3.jpg" alt="slide image"></li>
+            <li><img src="img/slide4.jpg" alt="slide image"></li>
+
+        </ul>
+
+    </div>
+    <main>
+        <h3 id="title"></h3>
+
+        <section>
+
+            <article>
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+                <div class="box"></div>
+
+            </article>
+
+        </section>
+
+
+    </main>
+
+    <script>
+
+        window.onload = function () {
+            // 전체 폰트,배경색깔
+            document.body.style.fontFamily = "Charcoal,sans-serif";
+
+            // title
+            var title = document.getElementById("title")
+            title.innerHTML = "베스트 제품";
+            title.style.color = "black";
+            title.style.fontSize = "45px";
+            title.style.width = "100%";
+            title.style.textAlign = "center";
+            title.style.letterSpacing = "10px";
+            title.style.fontFamily = "Impact";
+            title.margin = "0";
+
+            // sub title
+
+            var subtitle = document.createElement("p");
+            var textnode = document.createTextNode(" 지금 실시간 인기 ");
+            subtitle.appendChild(textnode);
+            title.appendChild(subtitle);
+            subtitle.style.color = "#666";
+            subtitle.style.fontSize = "25px";
+            subtitle.style.margin = "0";
+            //article
+
+            var article = document.getElementsByTagName("article")[0];
+            article.style.width = "1260px";
+            article.style.height = "1177px";
+            article.style.textAlign = "center";
+            article.style.margin = "0 auto";
+            //box
+            var boxs = document.getElementsByClassName('box');
+            for (var i = 0; i < boxs.length; i++) {
+                boxs[i].boxSizing = "border-box";
+                boxs[i].style.width = "228px";
+                boxs[i].style.height = "228px";
+                boxs[i].style.backgroundColor = "#fff";
+                boxs[i].style.margin = "35px 10px";
+                boxs[i].style.display = "inline-block";
+                boxs[i].style.boxShadow = "4px 4px 4px #ddd";
+            }
+        }
+
+        var i = 0;
+
+        function slide() {
+
+            i++;
+
+            if (i > $('.slide li:last').index()) {
+
+                i = 0;
+
+            }
+
+            $('.slide li').eq(i).stop().fadeIn('slow');
+
+            $('.slide li').eq(i - 1).stop().fadeOut();
+
+        }
+        setInterval(slide, 3000);
+    </script>
+    <footer></footer>
+</body>
+
+
+</html>

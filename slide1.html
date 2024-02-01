@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title></title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        ul,
+        li,
+        ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        #slidewrap {
+            width: 1920px;
+            height: 500px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .slide {
+            width: 1920px;
+            height: 500px;
+        }
+
+        .slide li {
+            width: 1920px;
+            height: 500px;
+            float: left;
+        }
+
+        .slide li img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+
+            width: 350px;
+            border-radius: 10px;
+            height: 60px;
+            line-height: 60px;
+            opacity: 0.8;
+        }
+
+
+
+        span {
+            position: absolute;
+            top: 50%;
+            display: block;
+            font-size: 38px;
+            color: #fff;
+            line-height: 40px;
+
+            background: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            height: 50px;
+            transform: translateY(-50%);
+        }
+
+        span:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+
+
+
+        .prev {
+            left: 0;
+            border-radius: 0 10px 10px 0px;
+            padding: 10px;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 10px 0px 0px 10px;
+            padding: 10px;
+        }
+    </style>
+
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="slidewrap">
+
+        <ul class="slide">
+
+            <li><img src="img/slide1.jpg" alt="slide image"></li>
+
+
+
+            <li><img src="img/slide2.jpg" alt="slide image"></li>
+
+
+
+            <li><img src="img/slide3.jpg" alt="slide image"></li>
+
+
+
+        </ul>
+
+        <span class="prev">&lt;</span>
+        <span class="next">&gt;</span>
+
+    </div>
+
+    <script>
+
+
+
+        function prev() {
+
+            $('.slide li:last').prependTo('.slide');
+
+            $('.slide').css('margin-left', -1000);    // $('.slide').css({marginLeft:-1000}); 
+
+            $('.slide').stop().animate({ marginLeft: 0 }, 800);
+
+        }
+
+
+
+        function next() {
+
+            $('.slide').stop().animate({ marginLeft: -1000 }, function () {
+
+                $('.slide li:first').appendTo('.slide');
+
+                $('.slide').css({ marginLeft: 0 });
+
+            });
+
+        }
+
+
+
+        function slide() {
+
+            $('.slide').stop().animate({ marginLeft: -1000 }, function () {
+
+                $('.slide li:first').appendTo('.slide');
+
+                $('.slide').css({ marginLeft: 0 });
+
+            });
+
+        }
+
+
+
+        setInterval(slide, 3000);
+
+
+
+        $('.prev').click(function () {
+
+            prev();
+
+        });
+
+
+
+        $('.next').click(function () {
+
+            next();
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
